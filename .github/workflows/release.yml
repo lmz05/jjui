@@ -30,6 +30,7 @@ jobs:
         run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
       - name: Build binaries
         env:
+          CGO_ENABLED: 0
           VERSION: ${{ steps.get_version.outputs.VERSION }}
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
